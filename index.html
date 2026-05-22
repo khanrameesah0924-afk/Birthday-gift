@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Abdullah 🎂</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd86f);
+      overflow:hidden;
+      padding:20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:420px;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:25px;
+      padding:35px 25px;
+      text-align:center;
+      color:white;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      animation:float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+    }
+
+    h1{
+      font-size:2.4rem;
+      margin-bottom:10px;
+    }
+
+    h2{
+      font-size:1.8rem;
+      color:#fff7d6;
+      margin-bottom:20px;
+    }
+
+    p{
+      font-size:1rem;
+      line-height:1.7;
+      margin-bottom:25px;
+    }
+
+    .cake{
+      font-size:70px;
+      animation:bounce 2s infinite;
+      margin-bottom:15px;
+    }
+
+    @keyframes bounce{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    button{
+      background:white;
+      color:#ff4f81;
+      border:none;
+      padding:14px 24px;
+      border-radius:50px;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    button:hover{
+      transform:scale(1.05);
+      background:#fff0f5;
+    }
+
+    .footer{
+      margin-top:20px;
+      font-size:0.9rem;
+      opacity:0.9;
+    }
+
+    /* Mobile Responsive */
+    @media(max-width:480px){
+      h1{
+        font-size:2rem;
+      }
+
+      h2{
+        font-size:1.5rem;
+      }
+
+      p{
+        font-size:0.95rem;
+      }
+
+      .cake{
+        font-size:60px;
+      }
+
+      .card{
+        padding:30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="cake">🎂</div>
+
+    <h1>Happy Birthday</h1>
+    <h2>Abdullah 💖</h2>
+
+    <p>
+      Wishing you a day filled with happiness, laughter, love,
+      and unforgettable memories.  
+      May all your dreams come true and your smile always shine bright ✨
+    </p>
+
+    <button onclick="startConfetti()">
+      Celebrate 🎉
+    </button>
+
+    <div class="footer">
+      Made with ❤️ for Abdullah
+    </div>
+  </div>
+
+  <script>
+    // Automatic Confetti on Load
+    window.onload = () => {
+      launchConfetti();
+    };
+
+    function startConfetti(){
+      launchConfetti();
+    }
+
+    function launchConfetti(){
+      const duration = 5 * 1000;
+      const animationEnd = Date.now() + duration;
+
+      const defaults = {
+        startVelocity: 30,
+        spread: 360,
+        ticks: 60,
+        zIndex: 999
+      };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: {
+            x: randomInRange(0.1, 0.3),
+            y: Math.random() - 0.2
+          }
+        }));
+
+        confetti(Object.assign({}, defaults, {
+          particleCount,
+          origin: {
+            x: randomInRange(0.7, 0.9),
+            y: Math.random() - 0.2
+          }
+        }));
+
+      }, 250);
+    }
+  </script>
+
+</body>
+</html>
