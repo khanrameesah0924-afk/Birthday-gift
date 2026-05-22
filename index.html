@@ -24,7 +24,6 @@
       min-height:100vh;
       display:flex;
       justify-content:center;
-      <audio id="birthdayMusic" src="birthday.mp3" loop></audio>
       align-items:center;
       background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd86f);
       overflow:hidden;
@@ -214,204 +213,24 @@
 
 </body>
 </html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy Birthday Abdullah 🎉</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+.gallery {
+  text-align: center;
+  padding: 20px;
 }
 
-body{
-  background:linear-gradient(135deg,#ff4d6d,#ffb703,#8ecae6);
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-  overflow-x:hidden;
+.gallery img {
+  width: 120px;
+  margin: 10px;
+  border-radius: 10px;
 }
 
-.container{
-  width:100%;
-  max-width:500px;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(12px);
-  border-radius:25px;
-  padding:25px;
-  text-align:center;
-  color:white;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
+<button onclick="showMessage()">Click Me 🎉</button>
 
-h1{font-size:2rem;}
-h2{margin:10px 0;}
-
-.cake{
-  font-size:60px;
-  animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-  50%{transform:translateY(-10px);}
-}
-
-button{
-  margin:8px;
-  padding:12px 18px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-  font-weight:bold;
-  transition:0.3s;
-}
-
-.btn{
-  background:white;
-  color:#ff4d6d;
-}
-
-.btn:hover{
-  transform:scale(1.05);
-}
-
-.gallery{
-  display:flex;
-  overflow-x:auto;
-  gap:10px;
-  margin-top:15px;
-  padding:10px;
-}
-
-.gallery img{
-  width:120px;
-  border-radius:12px;
-  flex-shrink:0;
-}
-
-#popup{
-  display:none;
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  justify-content:center;
-  align-items:center;
-}
-
-.popup-box{
-  background:white;
-  color:black;
-  padding:20px;
-  border-radius:15px;
-  text-align:center;
-}
-
-.timer{
-  font-size:1.2rem;
-  margin:10px 0;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <div class="cake">🎂</div>
-  <h1>Happy Birthday</h1>
-  <h2>Abdullah 💖</h2>
-
-  <!-- Countdown -->
-  <div class="timer" id="countdown"></div>
-
-  <p>Wishing you happiness, success, and endless joy ✨</p>
-
-  <!-- Buttons -->
-  <button class="btn" onclick="startConfetti()">Celebrate 🎉</button>
-  <button class="btn" onclick="showPopup()">Surprise 💌</button>
-  <button class="btn" onclick="toggleMusic()">Music 🎶</button>
-
-  <!-- Gallery -->
-  <div class="gallery">
-    <img src="https://source.unsplash.com/200x200/?birthday" />
-    <img src="https://source.unsplash.com/200x200/?cake" />
-    <img src="https://source.unsplash.com/200x200/?party" />
-  </div>
-
-  <p style="margin-top:15px;font-size:12px;">Made with ❤️</p>
-</div>
-
-<!-- Popup -->
-<div id="popup">
-  <div class="popup-box">
-    <h2>🎉 Surprise!</h2>
-    <p>You are amazing Abdullah 💖</p>
-    <button onclick="closePopup()">Close</button>
-  </div>
-</div>
-
-<!-- Music -->
-<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+<p id="msg"></p>
 
 <script>
-
-// Confetti
-function startConfetti(){
-  confetti({ particleCount: 200, spread: 100 });
+function showMessage() {
+  document.getElementById("msg").innerHTML =
+    "Surprise! 🎂 You are awesome!";
 }
-
-// Popup
-function showPopup(){
-  document.getElementById("popup").style.display="flex";
-}
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
-
-// Music
-function toggleMusic(){
-  let music = document.getElementById("music");
-  if(music.paused){
-    music.play();
-  } else {
-    music.pause();
-  }
-}
-
-// Countdown (example: 10 days from now)
-let target = new Date();
-target.setDate(target.getDate() + 10);
-
-setInterval(()=>{
-  let now = new Date().getTime();
-  let distance = target - now;
-
-  let days = Math.floor(distance / (1000*60*60*24));
-
-  document.getElementById("countdown").innerHTML =
-    "🎁 Birthday Countdown: " + days + " days left";
-},1000);
-
-// Auto confetti on load
-window.onload = () => {
-  startConfetti();
-};
-
 </script>
-
-</body>
-</html>
